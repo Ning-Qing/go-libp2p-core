@@ -26,6 +26,8 @@ const (
 	Secp256k1
 	// ECDSA is an enum for the supported ECDSA key type
 	ECDSA
+	// SM2 is an enum for the supported SM2 key type
+	SM2
 )
 
 var (
@@ -37,6 +39,7 @@ var (
 		Ed25519,
 		Secp256k1,
 		ECDSA,
+		SM2,
 	}
 )
 
@@ -52,6 +55,7 @@ var PubKeyUnmarshallers = map[pb.KeyType]PubKeyUnmarshaller{
 	pb.KeyType_Ed25519:   UnmarshalEd25519PublicKey,
 	pb.KeyType_Secp256k1: UnmarshalSecp256k1PublicKey,
 	pb.KeyType_ECDSA:     UnmarshalECDSAPublicKey,
+	pb.KeyType_SM2:       UnmarshalSM2PublicKey,
 }
 
 // PrivKeyUnmarshallers is a map of unmarshallers by key type
@@ -60,6 +64,7 @@ var PrivKeyUnmarshallers = map[pb.KeyType]PrivKeyUnmarshaller{
 	pb.KeyType_Ed25519:   UnmarshalEd25519PrivateKey,
 	pb.KeyType_Secp256k1: UnmarshalSecp256k1PrivateKey,
 	pb.KeyType_ECDSA:     UnmarshalECDSAPrivateKey,
+	pb.KeyType_SM2:       UnmarshalSM2PrivateKey,
 }
 
 // Key represents a crypto key that can be compared to another key
